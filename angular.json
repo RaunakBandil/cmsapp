@@ -27,12 +27,17 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/Pic",
+              "src/manifest.webmanifest"
             ],
-            "styles": [
+            "styles": [ "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
+            "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "serviceWorker": true,
+            "ngswConfigPath": "ngsw-config.json"
           },
           "configurations": {
             "production": {
@@ -63,6 +68,7 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": { "proxyConfig": "src/proxy.conf.json"},
           "configurations": {
             "production": {
               "browserTarget": "cmsapp:build:production"
@@ -77,6 +83,7 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "cmsapp:build"
+
           }
         },
         "test": {
@@ -90,7 +97,9 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/Pic",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles.scss"
@@ -100,5 +109,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "458ae1b6-6a79-4666-8b32-98e6c7e5cf38"
   }
 }

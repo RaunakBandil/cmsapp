@@ -6,7 +6,6 @@ body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
   font-size: 1rem;
-
 }
 
 a {
@@ -31,6 +30,5 @@ h6 {
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: auto;
-
   }
 }

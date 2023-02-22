@@ -1,0 +1,394 @@
+<header id="header" (scroll)="onscroll()" [ngClass]="navfixed?'fixed':'notfixed'"
+  style="background: rgba(24, 6, 185, 0.8);">
+  <div class="container-fluid d-flex align-items-center">
+    <h1 class="logo me-auto" *ngIf="mis[0]">
+      <a href="index.html">{{mis[0][0].attributes.logo}}</a>
+    </h1>
+    <nav class="nav-menu d-none d-lg-block">
+      <ul>
+        <li class="Home active"><a *ngIf="mis[0]" href="#{{mis[0][0].attributes.na}}">{{mis[0][0].attributes.na}}</a>
+        </li>
+        <li class="About"><a *ngIf="mis[0]" href="#{{mis[0][1].attributes.na}}">{{mis[0][1].attributes.na}}</a>
+        </li>
+        <li class="Services"><a *ngIf="mis[0]" href="#{{mis[0][2].attributes.na}}">{{mis[0][2].attributes.na}}</a>
+        </li>
+        <li class="Portfolio"><a *ngIf="mis[0]" href="#{{mis[0][3].attributes.na}}">{{mis[0][3].attributes.na}}</a>
+        </li>
+      </ul>
+    </nav>
+
+    <button class="mobile-nav-toggle d-lg-none" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+        class=" material-symbols-outlined">menu</i></button>
+
+    <a *ngIf="mis[0]" href="#Contact" class="get-started-btn scrollto">{{mis[0][0].attributes.button}}</a>
+  </div>
+</header>
+<!-- </header> -->
+<!-- Modal-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <button class="mobile-nav-toggle d-lg-none " data-bs-dismiss="modal" aria-label="Close"><i
+          class="material-symbols-outlined">close</i></button>
+      <div class="modal-body">
+        <ul class="list-unstyled">
+          <li data-bs-dismiss="modal" class="Home active"><a *ngIf="mis[0]"
+              href="#{{mis[0][0].attributes.na}}">{{mis[0][0].attributes.na}}</a>
+          </li>
+          <li data-bs-dismiss="modal" class="About"><a *ngIf="mis[0]"
+              href="#{{mis[0][1].attributes.na}}">{{mis[0][1].attributes.na}}</a>
+          </li>
+          <li data-bs-dismiss="modal" class="Services"><a *ngIf="mis[0]"
+              href="#{{mis[0][2].attributes.na}}">{{mis[0][2].attributes.na}}</a>
+          </li>
+          <li data-bs-dismiss="modal" class="Portfolio"><a *ngIf="mis[0]"
+              href="#{{mis[0][3].attributes.na}}">{{mis[0][3].attributes.na}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= Hero Section ======= -->
+<section id="Home" class="d-flex align-items-center hero">
+  <div class="container-fluid" data-aos="fade-up">
+    <div class="row justify-content-center" *ngIf="projects[0]">
+      <div class="col-xl-5 col-lg-6 pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+        <h1>{{projects[0][0].attributes.Des}}</h1>
+        <h2>{{projects[0][0].attributes.text}}</h2>
+        <div><a href="#about" class="btn-get-started scrollto">{{projects[0][0].attributes.button}}</a></div>
+      </div>
+      <div class="col-xl-5 col-lg-6 order-1 order-lg-2 hero-img mainaos" data-aos="zoom-in" data-aos-delay="150">
+        <img src={{projects[0][0].attributes.image.data[0].attributes.url}} class="img-fluid animated" alt="">
+      </div>
+    </div>
+  </div>
+
+</section>
+<!-- ======= About Section ======= -->
+<section id="About" class="about">
+  <div class="container">
+    <div class="row" *ngIf="projects[0]">
+      <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="500">
+        <img src="{{projects[0][1].attributes.image.data[0].attributes.url}}" class="img-fluid" alt="">
+      </div>
+      <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+        <h3>{{projects[0][1].attributes.text}}</h3>
+        <p class="font-italic">{{projects[0][1].attributes.Des}}</p>
+        <ul *ngFor="let list of list[0]" class="m-0">
+          <li class="d-flex"><span class="material-symbols-outlined me-2">check_circle</span>{{list.attributes.list}}
+          </li>
+        </ul>
+        <a href="#contact" class="read-more">{{projects[0][1].attributes.button}} <i
+            class="icofont-long-arrow-right"></i></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- End About Section -->
+<!--  client Section -->
+<section id="testimonials" class="testimonials section-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title" *ngIf="headers[0]">
+      <h2>{{headers[0][0].attributes.title}}</h2>
+    </div>
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let list of list[0] ; let i=index ">
+        <ng-template carouselSlide *ngIf="i<5">
+          <img src="{{list.attributes.image.data[0].attributes.url}}" class="custom-image-size" alt="">
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</section>
+<!-- End client -->
+<!--  Service Section -->
+<section id="Services" class="services section-bg">
+  <div class="container-fluid allcontainers" data-aos="fade-up">
+    <div class="section-title" *ngIf="headers[0]">
+      <h2>{{headers[0][1].attributes.title}}</h2>
+      <p>{{headers[0][1].attributes.text}}</p>
+    </div>
+
+    <div class="row gy-4">
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch" *ngFor="let service of service[0]" data-aos="zoom-in"
+        attr.data-aos-delay={{service.attributes.delay}}>
+        <div class="icon-box {{service.attributes.classname}}">
+          <div class="icon">
+            <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+              <path stroke="none" stroke-width="0" fill="#f5f5f5" attr.d={{service.attributes.svg}}>
+              </path>
+            </svg>
+            <i class={{service.attributes.classicon}}></i>
+          </div>
+          <h2>{{service.attributes.heading}}</h2>
+          <p>{{service.attributes.text}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- End Services Section -->
+<!-- ======= Portfolio Section ======= -->
+<section id="Portfolio" class="portfolio gallery">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title" *ngIf="headers[0]">
+      <h2>{{headers[0][2].attributes.title}}</h2>
+      <p>{{headers[0][2].attributes.text}}</p>
+    </div>
+    <div class="gallery">
+      <ul id="portfolio-flters">
+        <li class="buttons active" data-filter="all"><span *ngIf="mis[0]">{{mis[0][1].attributes.logo}}</span></li>
+        <li class="buttons" data-filter="App"><span *ngIf="mis[0]">{{mis[0][1].attributes.button}}</span></li>
+        <li class="buttons" data-filter="Graphic"><span *ngIf="mis[0]">{{mis[0][2].attributes.logo}}</span></li>
+        <li class="buttons" data-filter="Web"><span *ngIf="mis[0]">{{mis[0][3].attributes.logo}}</span></li>
+      </ul>
+      <div class="container tz-gallery">
+        <div class=" d-inline-block portpic" style=" gap: 25px;">
+
+          <div class="portfolio-wrap image text-center App">
+            <div *ngIf="port[0]">
+              <img src="{{port[0][0].attributes.image.data[0].attributes.url}}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h2>{{port[0][0].attributes.h4}}</h2>
+                <p>{{port[0][0].attributes.p}}</p>
+              </div>
+            </div>
+            <div class="portfolio-links">
+              <a href="../assets/portfolio1.jpg" class="lightbox" title="App1"><i class="bx bx-plus"></i></a>
+              <a href="https://jaywareapps.com/gearbagtx/" title="More Details" target="_blank">
+                <i class="bx bx-link"></i>
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-wrap image text-center Web ">
+            <div *ngIf="port[0]">
+              <img src="{{port[0][1].attributes.image.data[0].attributes.url}}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h2>Raunadssdviodsjfoisj</h2>
+                <p>{{port[0][1].attributes.p}}</p>
+              </div>
+            </div>
+            <div class="portfolio-links">
+              <a href="../assets/portfolio4.jpg" class="lightbox" title="Learn online"><i class="bx bx-plus"></i></a>
+              <a href="https://candelaiq.com/" title="More Details" target="_blank">
+                <i class="bx bx-link"></i>
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-wrap image text-center App">
+            <div *ngIf="port[0]">
+              <img src="{{port[0][2].attributes.image.data[0].attributes.url}}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h2>{{port[0][2].attributes.h4}}</h2>
+                <p>{{port[0][2].attributes.p}}</p>
+              </div>
+            </div>
+            <div class="portfolio-links">
+              <a href="../assets/portfolio7.png" class="lightbox" title="Quiz app"><i class="bx bx-plus"></i></a>
+
+            </div>
+          </div>
+          <div class="portfolio-wrap image text-center Web">
+            <div *ngIf="port[0]">
+              <img src="{{port[0][3].attributes.image.data[0].attributes.url}}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h2>{{port[0][3].attributes.h4}}</h2>
+                <p>{{port[0][3].attributes.p}}</p>
+              </div>
+            </div>
+            <div class="portfolio-links">
+              <a href="../assets/portfolio2.jpg" class="lightbox" title="web3"><i class="bx bx-plus"></i></a>
+              <a href="https://www.clarenceroadnews.co.uk/" title="More Details" target="_blank">
+                <i class="bx bx-link"></i>
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-wrap image text-center Web">
+            <div *ngIf="port[0]">
+              <img src="{{port[0][4].attributes.image.data[0].attributes.url}}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h2>{{port[0][4].attributes.h4}}</h2>
+                <p>{{port[0][4].attributes.p}}</p>
+              </div>
+            </div>
+            <div class="portfolio-links">
+              <a href="../assets/portfolio5.jpg" class="lightbox" title="Custom CMS"><i class="bx bx-plus"></i></a>
+              <a href="#" title="More Details" target="_blank">
+                <i class="bx bx-link"></i>
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-wrap image text-center Web ">
+            <div *ngIf="port[0]">
+              <img src="{{port[0][5].attributes.image.data[0].attributes.url}}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h2>{{port[0][5].attributes.h4}}</h2>
+                <p>{{port[0][5].attributes.p}}</p>
+              </div>
+            </div>
+            <div class="portfolio-links">
+              <a href="../assets/portfolio8.jpg" class="lightbox" title="Digital menu for Restaurant "><i
+                  class="bx bx-plus"></i></a>
+              <a href="#" title="More Details" target="_blank">
+                <i class="bx bx-link"></i>
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-wrap image text-center App">
+            <div *ngIf="port[0]">
+              <img src="{{port[0][6].attributes.image.data[0].attributes.url}}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h2>{{port[0][6].attributes.h4}}</h2>
+                <p>{{port[0][6].attributes.p}}</p>
+              </div>
+            </div>
+            <div class="portfolio-links">
+              <a href="../assets/portfolio10.png" class="lightbox" title="Web3"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+          <div class="portfolio-wrap image text-center App">
+            <div *ngIf="port[0]">
+              <img src="{{port[0][7].attributes.image.data[0].attributes.url}}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h2>{{port[0][7].attributes.h4}}</h2>
+                <p>{{port[0][7].attributes.p}}</p>
+              </div>
+            </div>
+            <div class="portfolio-links">
+              <a href="../assets/portfolio3.jpg" class="lightbox" title="App2"><i class="bx bx-plus"></i></a>
+              <a href="#" title="More Details" target="_blank">
+                <i class="bx bx-link"></i>
+              </a>
+            </div>
+          </div>
+          <div class="portfolio-wrap image text-center Graphic">
+            <div *ngIf="port[0]">
+              <img src="{{port[0][8].attributes.image.data[0].attributes.url}}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h2>{{port[0][8].attributes.h4}}</h2>
+                <p>{{port[0][8].attributes.p}}</p>
+              </div>
+            </div>
+            <div class="portfolio-links">
+              <a href="../assets/portfolio6.jpg" class="lightbox" title="Card2"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+          <div class="portfolio-wrap image text-center Graphic">
+            <div *ngIf="port[0]">
+              <img src="{{port[0][9].attributes.image.data[0].attributes.url}}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h2>{{port[0][9].attributes.h4}}</h2>
+                <p>{{port[0][9].attributes.p}}</p>
+              </div>
+            </div>
+            <div class="portfolio-links">
+              <a href="../assets/portfolio9.jpg" class="lightbox" title="card1"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ======= Portfolio Section ======= -->
+<!-- ======= Contact Section ======= -->
+<section id="Contact" class="contact section-bg">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title" *ngIf="headers[0]">
+      <h2>{{headers[0][3].attributes.title}}</h2>
+
+    </div>
+
+    <div class="row" *ngIf="footer[0]">
+      <div class="col-lg-6">
+        <div class="info-box mb-4">
+          <i class="{{footer[0][3].attributes.logo}}"></i>
+          <h3>{{footer[0][3].attributes.info}}</h3>
+          <p>{{footer[0][3].attributes.info1}}</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="info-box  mb-4">
+          <i class="{{footer[0][4].attributes.link}}"></i>
+          <h3>{{footer[0][4].attributes.info}}</h3>
+          <p>{{footer[0][4].attributes.info1}}</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="info-box  mb-4">
+          <i class="{{footer[0][2].attributes.logo}}"></i>
+          <h3>{{footer[0][2].attributes.info}}</h3>
+          <p>{{footer[0][2].attributes.info1}}</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-6 ">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d230.74322259324418!2d70.7621452310434!3d22.28209717793496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfb16257f470f31c1!2sCorporate%20Avenue!5e0!3m2!1sen!2sin!4v1609133839417!5m2!1sen!2sin"
+          frameborder="0" style="border:1px solid gray; width: 100%; height: 384px;" allowfullscreen></iframe>
+      </div>
+
+      <div class=" col-lg-6">
+        <form action="https://us-central1-formics-io.cloudfunctions.net/sendMail" method="post" role="form"
+          class="php-email-form">
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4"
+                data-msg="Please enter at least 4 chars" />
+              <div class="validate"></div>
+            </div>
+            <div class="col-md-6 form-group mt-3 mt-md-0">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                data-rule="email" data-msg="Please enter a valid email" />
+              <div class="validate"></div>
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
+              data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+            <div class="validate"></div>
+          </div>
+          <div class="form-group mt-3">
+            <textarea class="form-control" name="message" rows="5" data-rule="required"
+              data-msg="Please write something for us" placeholder="Message"></textarea>
+            <div class="validate"></div>
+          </div>
+          <div class="mb-3">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your message has been sent. Thank you!</div>
+          </div>
+          <div class="text-center">
+            <button type="submit" id="sendMail">Send Message</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- End Contact Section -->
+<app-footer></app-footer>
+
+
+<a href="#home" class="back-to-top" data-aos="zoom-in" data-aos-delay="150" *ngIf=" isMenuScrolled"
+  (click)="scrollToTop()"><i class="material-symbols-outlined">keyboard_arrow_up</i></a>
+<div *ngIf="loader">
+  <div id="preloader"></div>
+</div>
+<router-outlet></router-outlet>

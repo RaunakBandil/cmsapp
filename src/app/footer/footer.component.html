@@ -1,0 +1,50 @@
+<!-- ======= Footer ======= -->
+<footer id="footer" *ngIf="footer[0]">
+
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg col-md footer-contact text-center justify-content-center">
+          <h3>{{footer[0][0].attributes.logo}}</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-4 text-center justify-content-center">
+          <p>{{footer[0][0].attributes.address}} <br>
+            {{footer[0][1].attributes.address}}<br>
+            {{footer[0][5].attributes.address}}<br><br>
+          </p>
+        </div>
+        <div class="col-lg-4 col-md-4 text-center justify-content-center">
+          <p>
+            <strong> {{footer[0][0].attributes.info}}</strong> {{footer[0][0].attributes.info1}}<br>
+            <strong> {{footer[0][1].attributes.info}}</strong> {{footer[0][1].attributes.info1}}<br>
+          </p>
+        </div>
+
+        <div class="col-lg-4 col-md-4 text-center justify-content-center d-flex">
+          <div class="social-links text-center text-md-right pt-3 pt-md-0 " *ngFor="let item of footer[0]">
+            <a href="{{item.attributes.link}}" class="{{item.attributes.cname}}" aria-label="Read">
+              <i class="{{item.attributes.icon}}"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container text-center justify-content-center">
+
+    <div class="copyright-wrap d-md-flex py-4 text-center justify-content-center">
+      <div class="text-center text-md-start text-center justify-content-center">
+        <div class="copyright">
+          {{footer[0][1].attributes.logo}} <strong>
+            <span> {{footer[0][4].attributes.logo}}</span></strong>
+          . {{footer[0][5].attributes.logo}}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- End Footer -->
